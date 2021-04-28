@@ -1,0 +1,32 @@
+.body-top
+  .container
+    .form-fream
+      .form-area
+        p Potepan Sareでまだ体験したことのない旅をしよう
+        = form_with do |f|
+          = f.label "エリア"
+          = f.text_field :area, placeholder: "東京", class: "form"
+          = f.submit "探す", class: "search-btn btn-primary white"
+
+.body-bottom
+  .container
+    .recommended-areas
+      h1 おすすめのエリア
+      ul.area-panels
+        li.area-item
+          span.white 東京
+          = link_to '#', class: 'link area-item' do
+            = image_tag 'img_tokyo.jpg', class: 'img area-item-img', width: '200px'
+        li.area-item
+          span.white 大阪
+          = link_to '#', class: 'link area-item' do
+            = image_tag 'img_osaka.jpg', class: 'img area-item-img', width: '200px'
+        li.area-item
+          span.white 京都
+          = link_to '#', class: 'area-item' do
+            = image_tag 'img_kyoto.jpg', class: 'img area-item-img', width: '200px'
+        li.area-item
+          span.white 札幌
+          = link_to '#', class: 'area-item' do
+            = image_tag 'img_sapporo.jpg', class: 'img area-item-img', width: '200px'
+

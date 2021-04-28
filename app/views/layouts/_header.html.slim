@@ -1,0 +1,13 @@
+.header-left-nav
+  = link_to root_path do
+    = image_tag 'logo.png'
+  = form_with do |f|
+    .header-search
+      i class="fas fa-map-marker-alt"
+      = f.text_field :area, placeholder: "エリア"
+    .header-search
+      i class="fas fa-search"
+      = f.text_field :keyword, placeholder: "キーワード"
+.header-right-nav
+  = link_to 'ログイン', '#', class: 'btn btn-primary white'
+  = link_to '登録する', '#', class: 'btn btn-secondary white'
