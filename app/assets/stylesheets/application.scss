@@ -1,4 +1,13 @@
 /* overall */
+
+$gray-medium-light: #eaeaea;
+
+@mixin box_sizing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
+
 *{
   margin: 0;
   padding: 0;
@@ -25,6 +34,7 @@ input{
   border-radius: 5px;
   border: 1px solid #eee;
   box-sizing: border-box;
+  width: 100%;
   &.form{
     width: 100%;
     padding: 8px 12px;
@@ -173,3 +183,98 @@ input{
   background-color:#666666 ;
   cursor: pointer;
 }
+
+/* forms */
+.device-frame{
+  max-width: 600px;
+  margin: 100px auto;
+  border: 1px solid #eee;
+  padding:10px;
+  p{
+    margin: 50px 0 30px;
+    text-align: center;
+  }
+}
+.device-form{
+  width: 360px;
+  margin: 0 auto;
+  .required{
+    width: 40px;
+    padding: 5px 5px 0;
+    span{
+      padding: 5px;
+      background-color: tomato;
+      text-align: center;
+      border-radius: 5px;
+      font-size: 0.7rem;
+    }
+  }
+  .form-row{
+    display: flex;
+    margin-bottom: 10px;
+  }
+  .form-row input{
+    padding-left: 5px;
+  }
+  input{
+    height: 35px;
+    &[type=submit]{
+      margin: 15px 0;
+      padding: 0;
+    }
+  }    
+  a{
+    display: block;
+    text-align: center;
+  }
+}
+
+#error_explanation{
+  color: tomato;
+  font-weight: bold;
+  margin:0 0 20px 8px;
+  .check-content{
+    margin-bottom: 20px;
+  }
+  li{
+    list-style: circle;
+    list-style-position: inside;
+    font-size: 0.8rem;
+    margin-bottom: 3px;
+  }
+}
+
+.field_with_errors {
+  border:2px solid #fcc;
+  border-radius: 5px;
+  width: 100%;
+}
+
+/* flash */
+.alert{
+  width: 80%;
+  margin: 30px auto;
+  text-align: center;
+  padding: 15px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+.alert-success{
+  border: 2px solid #2dff57;
+  background: #78FF94;
+}
+
+/* miscellaneous */
+
+.debug_dump {
+  clear: both;
+  width: 80%;
+  text-align: center;
+  margin: 45px auto;
+  @include box_sizing;
+  background: $gray-medium-light;
+  border: 1px solid #666666;
+  
+}
+

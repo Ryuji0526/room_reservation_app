@@ -1,0 +1,22 @@
+.device-form
+  = render 'shared/error_messages'
+  = form_with(model: @user, local: true) do |f|
+    .form-row
+      .required
+        span.white 必須
+      = f.text_field :name, placeholder: "名前"
+    .form-row
+      .required
+        span.white 必須
+      = f.email_field :email, placeholder: "メールアドレス"
+    .form-row
+      .required
+        span.white 必須
+      = f.password_field :password, placeholder: "パスワード"
+    .form-row
+      .required
+        span.white 必須
+      = f.password_field :password_confirmation, placeholder: "パスワード確認"
+    .form-btn
+      = f.submit "新しいアカウントを作成", class: "btn btn-primary white"
+      = link_to "すでにアカウントをお持ちの方はログイン", "#"
