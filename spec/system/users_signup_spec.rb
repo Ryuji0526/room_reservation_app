@@ -13,7 +13,8 @@ RSpec.describe "UsersSignup", type: :system do
       click_button "新しいアカウントを作成"
     }.to change(User, :count).by(1)
     expect(current_path).to eq profile_user_path(1)
-    expect(page).to have_content "Potepan Shareへようこそ!"
+    expect(page).to have_selector('.alert-success')
+    expect(page).to have_selector('a', text: "ログアウト")
   end
 
   it "user faild sign up" do

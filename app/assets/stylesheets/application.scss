@@ -45,6 +45,9 @@ input{
   max-width: 1140px;
   margin: 0 auto;
 }
+.pointer{
+  cursor: pointer;
+}
 
 /* header */
 .header{
@@ -72,8 +75,9 @@ input{
     }
   }
 }
-.header-right-nav{
+.header-right-nav{  
   float: right;
+  display: flex;
   line-height: 70px;
   margin-right:30px;
   a{
@@ -83,6 +87,12 @@ input{
     &:hover{
       opacity: 0.7;
       transition: 0.3s;
+    }
+  }
+  ul{
+    
+    li{
+      line-height: normal;
     }
   }
 }
@@ -193,6 +203,7 @@ input{
   p{
     margin: 50px 0 30px;
     text-align: center;
+    font-size: 1.5rem;
   }
 }
 .device-form{
@@ -252,17 +263,21 @@ input{
 
 /* flash */
 .alert{
-  width: 80%;
+  width: 70%;
   margin: 30px auto;
   text-align: center;
-  padding: 15px;
+  padding: 10px;
   border-radius: 5px;
-  font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
+  opacity: 0.6;
 }
 .alert-success{
   border: 2px solid #2dff57;
   background: #78FF94;
+}
+.alert-danger{
+  border: 2px solid #DC143C;
+  background: #FF4F50;
 }
 
 /* miscellaneous */

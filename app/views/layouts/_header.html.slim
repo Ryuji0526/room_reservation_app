@@ -9,5 +9,22 @@
       i class="fas fa-search"
       = f.text_field :keyword, placeholder: "キーワード"
 .header-right-nav
-  = link_to 'ログイン', '#', class: 'btn btn-primary white'
-  = link_to '登録する', signup_path, class: 'btn btn-secondary white'
+  - if logged_in?
+    .right-nav-item.nav-user-name.white
+      | 名前
+    .right-nav-item.nav-menu.pointer.white
+      | メニュー
+      ul.dropdown-menu
+        li 
+          = link_to "ルーム登録", "#"
+        li 
+          = link_to "予約済みルーム", "#"
+        li 
+          = link_to "登録済みルーム", "#"
+        li 
+          = link_to "設定", "#"
+        li 
+          = link_to "ログアウト", logout_path, method: :delete
+  - else
+    = link_to 'ログイン', login_path, class: 'btn btn-primary white'
+    = link_to '登録する', signup_path, class: 'btn btn-secondary white'
