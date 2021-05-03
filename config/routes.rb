@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :users, only: [:create, :update, :destroy] do
     member do
       get 'account', 'profile'
+      patch 'account_update'
     end
   end  
 end

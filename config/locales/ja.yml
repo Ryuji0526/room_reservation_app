@@ -17,6 +17,7 @@ ja:
         password_digest: パスワード
         password: パスワード
         password_confirmation: パスワード
+        description: 自己紹介
   date:
     abbr_day_names:
     - 日

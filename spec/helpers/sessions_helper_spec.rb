@@ -11,11 +11,11 @@ RSpec.describe SessionsHelper, type: :helper do
     end
 
     it 'current_user returns right when session is nil' do
-      log_in_as(user)
+      log_in(user)
       expect(current_user).to eq user
       expect(is_logged_in?).to be_truthy
     end
-    
+
     it 'current_user returns nil when remember digest is wrong' do
       user.update_attribute(:remember_digest, User.digest(User.new_token))
       expect(current_user).to eq nil

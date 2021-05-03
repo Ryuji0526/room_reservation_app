@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe "UsersLogins", type: :system do
-  include IntegrationTestHelper
 
   before do
     @user = FactoryBot.create(:user)
