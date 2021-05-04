@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   attr_accessor :remember_token
+  has_many :rooms, dependent: :destroy
+  has_one_attached :image
   before_save { email.downcase! }
   validates :name, presence: true, length: {maximum: 50}
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
@@ -7,6 +9,9 @@ class User < ApplicationRecord
                   uniqueness: true
   validates :password, presence: true, length: {minimum: 6}, allow_nil: true
   validates :description, length: {maximum: 300}
+  validates :image, content_type: {in: %w[image/jpeg image/gif image/png],
+                            message: "はjpeg, gif, pngのいずれかのフォーマットを選択できます。"},
+              size: {less_than: 5.megabytes, message: "のファイルサイズは5MB以下にしてください。"}
 
   has_secure_password
 
@@ -35,5 +40,13 @@ class User < ApplicationRecord
 
   def forget
     update_attribute(:remember_digest, nil)
+  end
+
+  def feed
+    Room.where("user_id = ?", id)
+  end
+
+  def display_image
+    image.variant(resize_to_limit: [500, 500])
   end
 end

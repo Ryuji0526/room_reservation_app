@@ -1,5 +1,12 @@
 ---
 ja:
+  views:
+    pagination:
+      first: "&laquo; 最初"
+      last: "最後 &raquo;"
+      previous: "&lsaquo; 前"
+      next: "次 &rsaquo;"
+      truncate: "..."
   activerecord:
     errors:
       messages:
@@ -9,6 +16,7 @@ ja:
           has_many: "%{record}が存在しているので削除できません"
     models:
       user: ユーザー
+      room: ルーム
     attributes:
       user:
         id: ID
@@ -18,6 +26,14 @@ ja:
         password: パスワード
         password_confirmation: パスワード
         description: 自己紹介
+        image: プロフィール画像
+      room:
+        id: ID
+        name: 名前
+        description: 特徴
+        fee: 料金
+        address: 住所
+        image: ルーム画像
   date:
     abbr_day_names:
     - 日

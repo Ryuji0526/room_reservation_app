@@ -1,0 +1,12 @@
+.container
+  -if @room.image?
+    = image_tag "room01.jpg", class: "room-icon", width: '500px', height: '200px'
+  - else
+    = image_tag "room01.jpg", class: "room-icon", width: '500px', height: '200px'
+  .content
+    span.name #{@room.name}
+    span.address #{@room.address}
+    span.fee ¥#{@room.fee}
+    - if current_user?(@room.user)
+      = link_to "編集", edit_room_path(@room), class: 'edit-btn'
+      = link_to "削除する", @room, method: :delete, data: {confirm: "ルームを削除しますか？"}, class: 'delete-btn'

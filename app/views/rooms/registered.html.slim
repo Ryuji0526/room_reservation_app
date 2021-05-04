@@ -1,0 +1,8 @@
+.room-container
+  .room-items
+    -if @rooms.any?
+      h3 登録ルーム数: #{@rooms.count}件
+      span #{@rooms.offset_value} 〜 #{@rooms.offset_value + @rooms.length}件表示しています。
+      ol
+        = render @rooms
+      = paginate @rooms, window: 2, outer_window: 3

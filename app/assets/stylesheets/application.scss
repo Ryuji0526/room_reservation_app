@@ -1,4 +1,6 @@
 /* overall */
+@import 'bootstrap';
+@import "bootstrap-sprockets";
 
 $gray-medium-light: #eaeaea;
 
@@ -16,7 +18,7 @@ body{
   font-family:arial, sans-serif;
 }
 h1{
-  font-size: 1.3rem;
+  font-size: 1.5rem;
 }
 a{
   text-decoration: none;
@@ -68,13 +70,14 @@ a{
   display: flex;
   form{
     display: flex;
-    line-height: 70px;
-    .header-search{
+    align-items: center;
+    // line-height: 40px;
+    .search{
       position: relative;
       i{
         position: absolute;
-        top: 26px;
-        left: 8px;
+        top: 10px;
+        left: 5px;
         font-size: 18px;
       }
       input{
@@ -222,7 +225,7 @@ a{
   max-width: 550px;
   margin: 0 auto;
   .required{
-    width: 40px;
+    width: 50px;
     padding: 5px 5px 0;
     span{
       padding: 5px;
@@ -239,6 +242,12 @@ a{
       width: 100%;
       height: 100px;
       border: 1px solid #eee;
+      border-radius: 5px;
+    }
+    .yen{
+      align-self: center;
+      font-size: 1.8rem;
+      margin-right: 5px;
     }
   }
   .form-row input{
@@ -249,6 +258,10 @@ a{
     &[type=submit]{
       margin: 15px 0;
       padding: 0;
+    }
+    &[type=file]{
+      border: none;
+      align-self: center;
     }
   }    
   a{
@@ -262,16 +275,26 @@ a{
     align-items: center;
     width: auto;
     span{
-      margin-left: 20px;
+      margin-left: 30px;
       font-weight: normal;
+      vertical-align: bottom;
     }
     #session_remember_me{
       width: auto;
+      height: 100%;
       margin-left: 10px;    
+      margin-top: 0;
+      vertical-align: middle;
     }
   }  
   label{
     width: 150px;
+    align-self: center;
+    &[for=room_image]{
+      width: 90px;
+      font-weight: normal;
+
+    }
   }
 }
 
@@ -292,10 +315,8 @@ a{
 
 .field_with_errors{
   display: contents;
-  input{
-    border:2px solid #fcc;
-    border-radius: 5px;
-    width: 100%;
+  input, textarea{
+    border:2px solid #fcc !important;
   }
 }
 
@@ -348,7 +369,61 @@ a{
   }
 }
 
-
+/* rooms show */
+.room-items{
+  width: 90%;
+  margin: 0 auto;
+  ol{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    li{
+      max-width: 24%;
+      border: 1px solid #eee;
+      margin-bottom: 10px;      
+      img{
+        width: 100%;
+        height: 100%;
+        padding-top: 10px;
+      }
+      .content{
+          width: 100%;
+          padding: 15px;
+        span{
+          display: block;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          &.name, &.address, &.fee{
+            margin-bottom: 16px;            
+            font-weight: bold;
+          }
+          &.name{
+            color: #909090;
+          }
+          &.address{
+            font-size: 1.2rem;
+          }
+          &.fee{
+            float: right;
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+    &::before{
+      content:"";
+      display: block;
+      width:24%;
+      order:1;
+    }
+    &::after{
+      content:"";
+      display: block;
+      width:24%;
+    }
+  }
+}
 
 
 /* miscellaneous */

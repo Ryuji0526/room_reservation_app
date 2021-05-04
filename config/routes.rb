@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root 'static_pages#home'
   get '/signup', to: 'users#new'
   get '/login', to: 'sessions#new'
@@ -10,4 +11,9 @@ Rails.application.routes.draw do
       patch 'account_update'
     end
   end  
+  resources :rooms do
+    member do
+      get 'registered'
+    end
+  end
 end

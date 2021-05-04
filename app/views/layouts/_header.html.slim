@@ -2,10 +2,10 @@
   = link_to root_path do
     = image_tag 'logo.png'
   = form_with do |f|
-    .header-search
+    .search
       i class="fas fa-map-marker-alt"
       = f.text_field :area, placeholder: "エリア"
-    .header-search
+    .search
       i class="fas fa-search"
       = f.text_field :keyword, placeholder: "キーワード"
 .header-right-nav
@@ -14,13 +14,13 @@
       | 名前
     .right-nav-item.nav-menu.pointer.white
       | メニュー
-      ul.dropdown-menu
+      ul.dropdown
         li 
-          = link_to "ルーム登録", "#"
+          = link_to "ルーム登録",  new_room_path
         li 
           = link_to "予約済みルーム", "#"
         li 
-          = link_to "登録済みルーム", "#"
+          = link_to "登録済みルーム", registered_room_path(current_user)
         li 
           = link_to "設定", profile_user_path(@current_user)
         li 

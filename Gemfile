@@ -5,11 +5,17 @@ ruby '2.6.6'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3', '>= 6.1.3.1'
+gem 'image_processing'
+gem 'mini_magick'
+gem 'active_storage_validations'
 gem 'bootstrap-sass'
 gem 'bcrypt'
 gem 'faker'
+gem 'gimei'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
+gem 'kaminari'
+gem 'kaminari-bootstrap'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
@@ -67,3 +73,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'slim-rails'
 gem 'html2slim'
+gem "jquery-rails"
