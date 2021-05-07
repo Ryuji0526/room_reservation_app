@@ -1,5 +1,10 @@
 .row
-  = render 'user_nav'
+  .user-nav
+    ul
+      li.active
+        = link_to "アカウント", account_user_path(@user)
+      li
+        = link_to "プロフィール", profile_user_path(@user)
   .user-view
     .device-frame
       .device-form

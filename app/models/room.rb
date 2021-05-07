@@ -1,5 +1,6 @@
 class Room < ApplicationRecord
   belongs_to :user
+  has_many :reservations, dependent: :destroy
   has_one_attached :image
   default_scope -> {order(created_at: :desc)}
   validates :user_id, presence: true
@@ -14,4 +15,9 @@ class Room < ApplicationRecord
   def display_image
     image.variant(resize_to_limit: [500, 500])
   end
+
+  def get_reservations_info(user)
+    Reservation.where('user_id = ? and room_id = ?',user.id, id).first
+  end
+
 end

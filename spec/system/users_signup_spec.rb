@@ -1,10 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe "UsersSignup", type: :system do
-  it "user successfully sign up" do
+  it "successfully sign up" do
     visit root_path
     click_link "登録する"
-
     expect {
       fill_in "名前", with: "Michael"
       fill_in "メールアドレス", with: "test@rails.com"
@@ -14,7 +13,7 @@ RSpec.describe "UsersSignup", type: :system do
     }.to change(User, :count).by(1)
     expect(current_path).to eq profile_user_path(1)
     expect(page).to have_selector('.alert-success')
-    expect(page).to have_selector('a', text: "ログアウト")
+    expect(page).to have_selector('img.user-icon')
   end
 
   it "user faild sign up" do

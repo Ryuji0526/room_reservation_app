@@ -13,4 +13,20 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
+document.addEventListener('turbolinks:load', function() {
+  const userIcon = document.getElementById('user-icon');
+  const dropdown = document.getElementById('dropdown');
+  const roomSearch = document.getElementById('room_search');
+  const searchBoxes = document.querySelectorAll('#room_search > input')
+  
+  userIcon.addEventListener('click', () => {
+    dropdown.classList.toggle('hidden-menu');
+  });
+  
+  window.addEventListener('submit', () => {
+    searchBoxes.forEach(searchBox => {
+      searchBox.textContent = "";
+    });
+  });
+});
 

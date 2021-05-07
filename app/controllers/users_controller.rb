@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:account, :profile, :update, :account_update]
+  before_action :logged_in_user, only: [:account, :profile, :update, :account_update, :reserving]
   before_action :correct_user, only: [:account, :profile, :update, :account_update]
 
   def new
@@ -44,6 +44,12 @@ class UsersController < ApplicationController
     else
       render 'account'
     end
+  end
+
+  def reserving
+    @user = User.find(params[:id])
+    @reservations = Reservation.find_by(room_id: @user.reserving.ids)
+    @reserving_rooms = @user.reserving.paginate(page: params[:page], per_page: 32)
   end
 
 

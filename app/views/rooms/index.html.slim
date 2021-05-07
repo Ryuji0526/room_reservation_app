@@ -1,2 +1,11 @@
-h1 Rooms#index
-p Find me in app/views/rooms/index.html.slim
+.room-container
+  .room-items
+    h3 検索結果: #{@rooms.count}件
+    -if @rooms.any?
+      span #{@rooms.offset_value} 〜 #{@rooms.offset_value + @rooms.length}件表示しています。
+      ol
+        = render @rooms
+      = paginate @rooms
+    -else
+      .not-found
+        h1 検索結果にマッチしたお部屋が見つかりませんでした

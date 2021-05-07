@@ -5,4 +5,7 @@
       span #{@rooms.offset_value} 〜 #{@rooms.offset_value + @rooms.length}件表示しています。
       ol
         = render @rooms
-      = paginate @rooms, window: 2, outer_window: 3
+      = paginate @rooms
+    - else
+      .not-found
+        h1 現在ご登録しているお部屋はございません。

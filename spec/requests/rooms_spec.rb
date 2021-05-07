@@ -34,14 +34,14 @@ RSpec.describe "Rooms", type: :request do
   end
 
   describe "#create" do
-    it "should redirect creawe when not logged in" do
+    it "should redirect create when not logged in" do
       expect {
         post rooms_path, params: {room: {name: "test", description: "test", address: "address", fee: 1000}}      
       }.to_not change(Room, :count)
       expect(response).to redirect_to login_path
     end      
     
-    it "should redirect creawe when logged in" do
+    it "should redirect create when logged in" do
       log_in_as @user
       expect {
         post rooms_path, params: {room: {name: "test", description: "test", address: "address", fee: 1000}}      
@@ -58,7 +58,7 @@ RSpec.describe "Rooms", type: :request do
       expect(response).to redirect_to login_path
     end
 
-    it "should redirect destroy when not logged in" do
+    it "should successfully destroy when logged in" do
       log_in_as(@user)
       expect {
         delete room_path(@room)

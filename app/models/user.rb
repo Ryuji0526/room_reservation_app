@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   attr_accessor :remember_token
+  has_many :reservations
+  has_many :reserving, through: :reservations, source: :room
   has_many :rooms, dependent: :destroy
   has_one_attached :image
   before_save { email.downcase! }
@@ -48,5 +50,13 @@ class User < ApplicationRecord
 
   def display_image
     image.variant(resize_to_limit: [500, 500])
+  end
+
+  def cancel(room)
+    Reservations.find_by(room_id: room.id).destroy
+  end
+
+  def reserving?(room)
+    reserving.include?(room)
   end
 end

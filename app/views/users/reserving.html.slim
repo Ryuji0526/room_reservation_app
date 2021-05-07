@@ -1,0 +1,41 @@
+.room-container
+  .room-items
+    -if @reserving_rooms.any?
+      h3 登録ルーム数: #{@reserving_rooms.count}件
+      span #{@reserving_rooms.offset_value} 〜 #{@reserving_rooms.offset_value + @reserving_rooms.length}件表示しています。
+      table.reserving-table
+        thead
+          tr
+            th ルーム画像
+            th ルーム名
+            th 合計料金
+            th 開始日
+            th 終了日
+            th 予約確定日時
+        tbody
+          - @reserving_rooms.each do |room|
+            tr
+              td.room-img
+               = link_to room_path(room)
+                .image-frame
+                  -if room.image.attached?
+                    = image_tag room.display_image, class: "room-icon"
+                  - else
+                    = image_tag "room01.jpg", class: "room-icon"
+              td.room-name 
+                = link_to "#{room.name}", room_path(room)
+              td.total-fee ¥#{room.get_reservations_info(@user).total_fee}
+              td.start-date #{room.get_reservations_info(@user).start_date.to_s(:date_jp)}
+              td.end-date #{room.get_reservations_info(@user).end_date.to_s(:date_jp)}
+              td.created-at #{room.get_reservations_info(@user).created_at.to_s(:datetime_jp)}
+              td.cancel-btn
+                = link_to 'キャンセル', room.get_reservations_info(@user), method: :delete, data: {confirm: "ルームを削除しますか？"}, class: 'white btn btn-delete'
+      = paginate @reserving_rooms 
+    - else
+      .not-found
+        h1 現在ご予約しているお部屋はございません。
+
+
+
+
+

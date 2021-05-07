@@ -9,4 +9,8 @@ module IntegrationTestHelper
     end
     click_button "ログイン"
   end  
+
+  def get_total_fee(number_of_people, start_date, end_date)
+      @room.fee * number_of_people * (end_date - start_date).to_i
+  end
 end

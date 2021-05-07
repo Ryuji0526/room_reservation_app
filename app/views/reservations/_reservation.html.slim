@@ -1,0 +1,12 @@
+li
+  = link_to room_path(reservation)
+    .image-frame
+      -if reservation.image.attached?
+        = image_tag reservation.display_image, class: "reservation-icon"
+      - else
+        = image_tag "room01.jpg", class: "reservation-icon"
+    .content
+      span.name #{reservation.name}
+      span.address #{reservation.address}
+      span.fee ¥#{reservation.fee}
+

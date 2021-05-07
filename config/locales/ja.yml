@@ -34,6 +34,12 @@ ja:
         fee: 料金
         address: 住所
         image: ルーム画像
+      reservation:
+        id: ID
+        start_date: 開始日
+        end_date: 終了日
+        number_of_people: 人数
+        total_fee: 総額
   date:
     abbr_day_names:
     - 日

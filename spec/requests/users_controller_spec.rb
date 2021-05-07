@@ -8,6 +8,14 @@ RSpec.describe "UsersController", type: :request do
     @other_user = FactoryBot.create(:user)
   end
 
+  describe "reserving / get" do
+    it "returns http success" do
+      log_in_as @user
+      get reserving_user_path(@user)
+      expect(response).to have_http_status(:success)
+    end
+  end
+
   describe "profile / update" do
     it "should redirect profile when not logged in" do
       get profile_user_path(@user)

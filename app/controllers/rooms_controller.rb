@@ -2,11 +2,12 @@ class RoomsController < ApplicationController
   before_action :logged_in_user
   before_action :correct_user, only: [:edit, :update, :destroy]
   def index
-    
+    @rooms = @q.result(distinct: true).paginate(page: params[:page], per_page: 32)
   end
 
   def show
     @room = Room.find(params[:id])
+    @reservation = current_user.reservations.build
   end
 
   def registered
@@ -25,17 +26,14 @@ class RoomsController < ApplicationController
       redirect_to root_path
     else
       @rooms = current_user.feed.paginate(page: params[:page], per_page: 32)
-      render 'new'      
+      render 'new'
     end
-  end
-
-  def edit
   end
 
   def update
     if @room.update(room_params)
       flash[:success] = "ルームを更新しました"
-      redirect_to registered_room_path(current_user)
+      redirect_to room_path(@room)
     else
       render 'profile'
     end

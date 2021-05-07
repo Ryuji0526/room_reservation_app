@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
   def home
-    # @user = @current_user
+    @q = Room.ransack(params[:q])
   end
 end

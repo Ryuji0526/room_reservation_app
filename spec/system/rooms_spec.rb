@@ -16,6 +16,7 @@ RSpec.describe "Rooms", type: :system do
   it "registerd rooms successfully display" do
     log_in_as @user
     visit root_path
+    find('img.user-icon').click
     click_link "登録済みルーム"
     expect(current_path).to eq registered_room_path(@user)
     expect(page).to have_selector 'h3', text: @user.rooms.count
@@ -27,12 +28,13 @@ RSpec.describe "Rooms", type: :system do
   end
 
   # ユーザーは有効なルームのみ登録できる
-  it "user create a new room" do
+  it "user create/delete a new room" do
     log_in_as @user
     visit root_path
-    # 無効な送信
+    find('img.user-icon').click
     click_link "ルーム登録"
     expect(current_path).to eq new_room_path
+    # 無効な送信
     expect {
       fill_in "名前", with: ""
       fill_in "説明", with: ""
@@ -41,9 +43,10 @@ RSpec.describe "Rooms", type: :system do
       click_button "ルームを登録"
     }.to_not change(Room, :count)
     expect(page).to have_selector '#error_explanation'
-    # 有効な送信
     visit root_path
+    find('img.user-icon').click
     click_link "ルーム登録"
+    # 有効な送信
     img = "spec/files/kitten.jpg"
     expect {
       fill_in "名前", with: "room"
@@ -57,15 +60,15 @@ RSpec.describe "Rooms", type: :system do
     expect(page).to have_selector '.alert-success'
     visit room_path(@room)
     expect(page).to have_selector 'a', text: '編集'
-    expect(page).to have_selector 'a', text: '削除する'
+    expect(page).to have_selector 'a', text: '削除'
     # 投稿を削除する
-    click_link '削除する'
+    click_link '削除'
     page.driver.browser.switch_to.alert.accept unless Capybara.javascript_driver == :poltergeist
     expect(current_path).to eq root_path
     expect(page).to have_selector '.alert-success'
     # 違うユーザーのプロフィールにアクセス(削除リンクがない)
     visit room_path(@other_user_room)
     expect(page).to_not have_selector 'a', text: '編集'
-    expect(page).to_not have_selector 'a', text: '削除する'
+    expect(page).to_not have_selector 'a', text: '削除'
   end
 end

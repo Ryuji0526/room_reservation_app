@@ -35,12 +35,14 @@ RSpec.describe "UsersLogins", type: :system do
     log_in_as(@user)
     expect(page).to_not have_selector('.alert-danger')
     visit root_path
+    find('img.user-icon').click
     expect(page).to have_selector('a', text: "ログアウト")
   end
 
   # ログアウトに成功する
   it "user successfully log out" do
     log_in_as(@user)
+    find('img.user-icon').click
     click_link "ログアウト"
     expect(current_path).to eq root_path
     expect(page).to_not have_selector('a', text: "ログアウト")
@@ -60,6 +62,7 @@ RSpec.describe "UsersLogins", type: :system do
   # remember_tokenをクッキーに保存しない
   it "user login without remebering" do
     log_in_as(@user, remember_token: '1')
+    find('img.user-icon').click
     click_link 'ログアウト'
     log_in_as(@user, remember_token: '0')
     expect(get_me_the_cookie('remember_token')).to eq nil

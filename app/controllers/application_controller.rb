@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
+  before_action :set_search
 
   private
 
@@ -9,5 +10,9 @@ class ApplicationController < ActionController::Base
         flash[:danger] = "ログインをしてください"
         redirect_to login_url
       end
+    end
+
+    def set_search
+      @q = Room.ransack(params[:q])
     end
 end

@@ -1,30 +1,35 @@
 .header-left-nav
   = link_to root_path do
     = image_tag 'logo.png'
-  = form_with do |f|
+  = search_form_for @q, enforce_utf8: false, url: rooms_path do |f|
     .search
       i class="fas fa-map-marker-alt"
-      = f.text_field :area, placeholder: "エリア"
+      = f.search_field :address_cont, placeholder: "エリア"
     .search
       i class="fas fa-search"
-      = f.text_field :keyword, placeholder: "キーワード"
+      = f.search_field :description_or_name_or_address_cont , placeholder: "キーワード"
+    = f.submit "", class: 'display-none'
 .header-right-nav
   - if logged_in?
     .right-nav-item.nav-user-name.white
-      | 名前
+      = current_user.name
     .right-nav-item.nav-menu.pointer.white
-      | メニュー
-      ul.dropdown
+      - if current_user.image.attached?
+        = image_tag current_user.display_image, class: "user-icon", id: "user-icon"
+      - else
+        = image_tag "room01.jpg", class: "user-icon", id: "user-icon"
+      ul.dropdown.hidden-menu#dropdown
         li 
           = link_to "ルーム登録",  new_room_path
         li 
-          = link_to "予約済みルーム", "#"
+          = link_to "予約済みルーム", reserving_user_path(current_user)
         li 
           = link_to "登録済みルーム", registered_room_path(current_user)
         li 
-          = link_to "設定", profile_user_path(@current_user)
+          = link_to "設定", profile_user_path(current_user)
         li 
           = link_to "ログアウト", logout_path, method: :delete
   - else
     = link_to 'ログイン', login_path, class: 'btn btn-primary white'
     = link_to '登録する', signup_path, class: 'btn btn-secondary white'
+
