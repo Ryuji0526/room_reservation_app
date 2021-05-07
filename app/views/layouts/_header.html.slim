@@ -17,7 +17,7 @@
       - if current_user.image.attached?
         = image_tag current_user.display_image, class: "user-icon", id: "user-icon"
       - else
-        = image_tag "room01.jpg", class: "user-icon", id: "user-icon"
+        = image_tag "default_icon.jpg", class: "user-icon", id: "user-icon"
       ul.dropdown.hidden-menu#dropdown
         li 
           = link_to "ルーム登録",  new_room_path

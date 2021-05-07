@@ -519,6 +519,16 @@ a{
       }
     }
   }
+  .fee-per-day{
+    display: flex;
+    align-items: center;
+    .fas{
+      font-size: 1.6rem;
+    }
+    h3{
+      margin: 10px 5px;
+    }
+  }
 }
 
 /* reservation room */
