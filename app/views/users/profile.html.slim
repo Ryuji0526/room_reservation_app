@@ -1,0 +1,24 @@
+.row
+  .user-nav
+    ul
+      li
+        = link_to "アカウント", account_user_path(@user)
+      li.active
+        = link_to "プロフィール", profile_user_path(@user)
+  .user-view
+    .device-frame
+      .device-form
+        p プロフィール
+        = render 'shared/error_messages', object: @user
+        = form_with(model: @user, local: true) do |f|          
+          .form-row
+            = f.label :name
+            = f.text_field :name, placeholder: "名前"
+          .form-row
+            = f.label :description
+            = f.text_area :description, placeholder: "自己紹介を記入できます。"
+          .form-row
+            =f.label :image
+            = f.file_field :image, accept: "image/jpeg,image/gif,image/png"
+          .form-btn
+            = f.submit "編集", class: "btn btn-primary white"

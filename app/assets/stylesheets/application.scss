@@ -1,0 +1,591 @@
+/* overall */
+@import 'bootstrap';
+@import "bootstrap-sprockets";
+
+$gray-medium-light: #eaeaea;
+
+@mixin box_sizing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+}
+body{
+  font-family:arial, sans-serif;
+}
+h1{
+  font-size: 1.5rem;
+}
+a{
+  text-decoration: none;
+}
+li{
+  list-style: none;
+}
+.white{
+  color: white;
+}
+header, footer{
+  background: black;
+}
+input{
+  border-radius: 5px;
+  border: 1px solid #eee;
+  box-sizing: border-box;
+  width: 100%;
+  &.form{
+    width: 100%;
+    padding: 8px 12px;
+    display: block;
+  }
+}
+.container{
+  max-width: 1140px;
+  margin: 0 auto;
+}
+.pointer{
+  cursor: pointer;
+}
+a{
+  color: #000;
+  &:hover{
+    opacity: 0.4;
+    transition: 0.3s;
+  }
+}
+.user-icon{
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.display-none{
+  display: none;
+
+}
+
+/* header */
+.header{
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header-left-nav{
+  display: flex;
+  form{
+    display: flex;
+    align-items: center;
+    // line-height: 40px;
+    .search{
+      position: relative;
+      i{
+        position: absolute;
+        top: 10px;
+        left: 5px;
+        font-size: 18px;
+      }
+      input{
+        padding:8px 12px 8px 25px;
+      }
+      margin-right: 5px;
+    }
+  }
+}
+.header-right-nav{  
+  display: flex;
+  align-items: center;
+  margin-right:30px;
+  a.btn{       
+    &:first-child{
+      margin-right: 10px;
+    }
+    &:hover{
+      opacity: 0.7;
+      transition: 0.3s;
+    }
+  }
+  .nav-user-name{
+    margin-right: 10px;
+  }
+
+  ul{
+    position: absolute;
+    top: 70px;
+    padding: 15px;
+    background: white;
+    right: 0;
+    transition: all 0.5s;
+    li{
+      line-height: normal;
+      margin-top: 10px;
+    }
+  }
+  .hidden-menu{
+    opacity: 0;
+    transition: all 0.5s;
+    z-index: -1;
+  }
+}
+
+/* footer */
+.footer{
+  height:180px;
+  p{
+    line-height: 180px;
+    text-align: center;
+    font-size:0.7rem;
+  }
+}
+
+/* top */
+.body-top{
+  background-image: url(img_cover_top.jpg);
+  background-size: cover;
+  height: 650px;
+  .form-fream{    
+    height: 650px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    .form-area{
+      background: #fff;
+      border-radius: 10px;
+      width: 40%;
+      height: 200px;
+      padding: 20px;
+      p{
+        font-size: 1.4rem;
+      }
+      form{
+        margin-top: 20px;
+      }
+      input{
+        margin: 5px 0;        
+      }      
+      .search-btn{
+        width: 100%;
+        margin-top: 10px;
+        padding: 4px 0;
+      }
+    }
+  }
+}
+
+.body-bottom{
+  margin: 60px 0;
+  .recommended-areas{
+    width: 90%;
+    margin: 0 auto;
+    .area-panels{
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+      .area-item{      
+        position: relative;
+        span{
+          position: absolute;
+          bottom: 50px;
+          font-weight: bold;
+          z-index: 1;
+          left: 0;
+          right: 0;
+          text-align: center;
+          font-size: 24px;
+        }
+      }
+      img{
+        height:360px;
+        object-fit: cover;
+        border-radius: 5px;
+        &:hover{
+          opacity: 0.7;
+          transition: 0.4s;
+        }
+      }
+    }
+  }
+}
+
+
+
+/* btn */
+.btn{
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.btn-primary{
+  background-color:#0099FF;
+  cursor: pointer;
+}
+
+.btn-secondary{
+  background-color:#666666 ;
+  cursor: pointer;
+}
+
+.btn-edit{
+  background-color:#78FF94;
+  cursor: pointer;
+}
+
+.btn-delete{
+  background-color:#FF4F50 ;
+  cursor: pointer;
+}
+
+/* forms */
+.device-frame{
+  max-width: 600px;
+  margin: 100px auto;
+  border: 1px solid #eee;
+  padding:10px;
+  p{
+    margin: 50px 0 30px;
+    text-align: center;
+    font-size: 1.5rem;
+  }
+}
+.device-form{
+  max-width: 550px;
+  margin: 0 auto;
+  .required{
+    width: 50px;
+    padding: 5px 5px 0;
+    span{
+      padding: 5px;
+      background-color: tomato;
+      text-align: center;
+      border-radius: 5px;
+      font-size: 0.7rem;
+    }
+  }
+  .form-row{
+    display: flex;
+    margin-bottom: 10px; 
+    textarea{
+      width: 100%;
+      height: 100px;
+      border: 1px solid #eee;
+      border-radius: 5px;
+    }
+    .yen{
+      align-self: center;
+      font-size: 1.8rem;
+      margin-right: 5px;
+    }
+  }
+  .form-row input{
+    padding-left: 5px;
+  }
+  input{
+    height: 35px;
+    &[type=submit]{
+      margin: 15px 0;
+      padding: 0;
+    }
+    &[type=file]{
+      border: none;
+      align-self: center;
+    }
+  }    
+  a{
+    display: block;
+    text-align: center;
+  }
+  .checkbox{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    width: auto;
+    span{
+      margin-left: 30px;
+      font-weight: normal;
+      vertical-align: bottom;
+    }
+    #session_remember_me{
+      width: auto;
+      height: 100%;
+      margin-left: 10px;    
+      margin-top: 0;
+      vertical-align: middle;
+    }
+  }  
+  label{
+    width: 150px;
+    align-self: center;
+    &[for=room_image]{
+      width: 90px;
+      font-weight: normal;
+
+    }
+  }
+}
+
+
+#error_explanation{
+  color: tomato;
+  font-weight: bold;
+  margin:0 0 20px 8px;
+  .check-content{
+    margin-bottom: 20px;
+  }
+  li{
+    list-style: circle;
+    list-style-position: inside;
+    font-size: 0.8rem;
+    margin-bottom: 3px;
+  }
+}
+
+.field_with_errors{
+  display: contents;
+  input, textarea{
+    border:2px solid #fcc !important;
+  }
+}
+
+/* flash */
+.alert{
+  position: absolute;
+  top: 50px;
+  left: 0;
+  right: 0;
+  width: 60%;
+  margin: 30px auto;
+  text-align: center;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  opacity: 0.6;
+}
+.alert-success{
+  border: 2px solid #2dff57;
+  background: #78FF94;
+}
+.alert-danger{
+  border: 2px solid #DC143C;
+  background: #FF4F50;
+}
+
+/* edit view */
+.row{
+  display: flex;
+  width: 100%;
+  .user-nav{
+    width: 20%;
+    background: #eee;
+    padding: 15px;
+    ul{
+      padding-left: 20px;
+      li{
+        margin-top: 17px;
+        &.active{
+          border-right: 2px solid #0099FF;
+          a{
+            color: #0099FF;
+          }
+        }
+      }
+    }
+  }
+  .user-view{
+    width: 100%;
+  }
+}
+
+/* rooms show/index */
+.room-items{
+  width: 90%;
+  margin: 0 auto;
+  ol{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    li{
+      max-width: 24%;
+      border: 1px solid #eee;
+      margin-bottom: 10px;      
+      .room-icon{
+        width: 100%;
+        height: 200px;
+        padding-top: 10px;
+        object-fit: cover;
+      }
+      .content{
+          width: 100%;
+          padding: 15px;
+        span{
+          display: block;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          &.name, &.address, &.fee{
+            margin-bottom: 16px;            
+            font-weight: bold;
+          }
+          &.name{
+            color: #909090;
+          }
+          &.address{
+            font-size: 1.2rem;
+          }
+          &.fee{
+            float: right;
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+    &::before{
+      content:"";
+      display: block;
+      width:24%;
+      order:1;
+    }
+    &::after{
+      content:"";
+      display: block;
+      width:24%;
+    }
+  }
+}
+.not-found h1{
+  color: #FF4F50;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  font-weight: bold;
+}
+
+/* room#show */
+.show-container{
+  display: flex;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  .container-left{
+    max-width: 66.6%;
+    .room-icon{
+      width: 100%;      
+      height:auto;
+      max-height: 400px;
+      object-fit: cover;
+    }
+    .room-detail{
+      display: flex;
+      align-items: center;
+      margin-top: 15px;
+      margin-bottom: 15px;
+      .room-owner-img, .room-profile{
+        padding: 10px;
+      }
+      .room-profile{
+        span{
+          display: block;
+          &.name{
+            font-weight: bold;
+          }
+          &.address{
+            margin-top: 10px;
+            font-size: 1.3rem;
+          }
+        }        
+      }
+    }
+    .room-content{
+      padding: 30px 10px 5px;
+      border-top: 1px solid #eee;
+      border-bottom: 1px solid #eee;
+      p{
+        margin-bottom: 0;
+      }
+      .owner-container{
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 20px;
+        .btn{
+          margin-right:5px;
+          padding: 5px 10px;
+        }
+      }
+    }
+  }
+  .fee-per-day{
+    display: flex;
+    align-items: center;
+    .fas{
+      font-size: 1.6rem;
+    }
+    h3{
+      margin: 10px 5px;
+    }
+  }
+}
+
+/* reservation room */
+.reserving-table{
+    border-collapse: collapse;
+    margin: 50px auto;
+  img{
+    width: 200px;
+    height: 100px;
+  }
+  thead{
+    tr{
+      border-top: 1px solid #eee;
+      border-bottom: 1px solid #eee;
+      th{
+        padding-top: 5px;
+        padding-bottom: 5px;
+        text-align: center;
+      }
+    }
+  }
+  tbody{
+    tr{
+      border-bottom: 1px solid #eee;
+      &:nth-child(2n){
+        background-color: #EAEAEA;
+      }
+      td{
+        padding: 10px;
+        font-size: 1.3rem;
+        &.room-name{
+          font-size: 1.4rem;
+          a{
+            color: #4EA1D5;
+          }
+        }
+        &.cancel-btn a{  
+          font-size: 1.2rem;
+          // width:80px;  
+          font-weight: bold;        
+        }
+      }
+   }
+  } 
+}
+
+
+/* miscellaneous */
+
+.debug_dump {
+  clear: both;
+  width: 80%;
+  text-align: center;
+  margin: 45px auto;
+  @include box_sizing;
+  background: $gray-medium-light;
+  border: 1px solid #666666;
+  
+}
+

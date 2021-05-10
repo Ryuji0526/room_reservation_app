@@ -1,0 +1,11 @@
+.room-container
+  .room-items
+    -if @rooms.any?
+      h3 登録ルーム数: #{@rooms.count}件
+      span #{@rooms.offset_value} 〜 #{@rooms.offset_value + @rooms.length}件表示しています。
+      ol
+        = render @rooms
+      = paginate @rooms
+    - else
+      .not-found
+        h1 現在ご登録しているお部屋はございません。

@@ -1,0 +1,12 @@
+li
+  = link_to room_path(room)
+    .image-frame
+      -if room.image.attached?
+        = image_tag room.display_image, class: "room-icon"
+      - else
+        = image_tag "room01.jpg", class: "room-icon"
+    .content
+      span.name #{room.name}
+      span.address #{room.address}
+      span.fee ¥#{room.fee}
+

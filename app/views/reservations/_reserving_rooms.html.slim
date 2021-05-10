@@ -1,0 +1,13 @@
+li
+  = link_to room_path(reserving-room)
+    .image-frame
+      -if reserving-room.image.attached?
+        = image_tag reserving-room.display_image, class: "room-icon"
+      - else
+        = image_tag "room01.jpg", class: "room-icon"
+    .content
+      span.name #{reserving_room.name}
+      span.address #{reserving_room.address}
+      span.date #{reserving_room.get_reserved_info(@user).start_date}
+      span.totalFee #{reserving_room.get_reserved_info(@user).total_fee}
+      span.number #{reserving_room.get_reserved_info(@user).number_of_people}

@@ -1,0 +1,24 @@
+.row
+  .user-nav
+    ul
+      li.active
+        = link_to "アカウント", account_user_path(@user)
+      li
+        = link_to "プロフィール", profile_user_path(@user)
+  .user-view
+    .device-frame
+      .device-form
+        p アカウント
+        = render 'shared/error_messages', object: @user
+        = form_with(model: @user, local: true, url: account_update_user_url) do |f|          
+          .form-row
+            = f.label :email
+            = f.email_field :email, placeholder: "メールアドレス"
+          .form-row
+            = f.label :password
+            = f.password_field :password, placeholder: "パスワード"
+          .form-row
+            = f.label :password_confirmation
+            = f.password_field :password_confirmation, placeholder: "パスワード確認"
+          .form-btn
+            = f.submit "編集", class: "btn btn-primary white"

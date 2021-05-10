@@ -1,0 +1,15 @@
+doctype html
+html
+  head
+    title
+      | RoomReservationApp
+    = render 'layouts/rails_default'
+  body
+    header.header
+      = render 'layouts/header'
+    main.main
+      - flash.each do |message_type, message|        
+        = content_tag(:div, message, class: "white alert alert-#{message_type}")
+      = yield
+    footer.footer
+      = render 'layouts/footer'
